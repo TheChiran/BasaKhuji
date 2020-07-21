@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/bootstrap.min.css">
+    <link rel="stylesheet" href="../style/mdb.min.css">
+    <link rel="stylesheet" href="../style/custom/index.css">
+    <link rel="stylesheet" href="../style/fontawesome/all.min.css">
+    <script src="../javascript/jquery.min.js"></script>
+    <script src="../javascript/bootstrap.min.js"></script>
+    <script src="../javascript/mdb.min.js"></script>
+    <script src="../javascript/fontawesome/all.min.js"></script>
+    <title>Home</title>
+</head>
+
+<body onload="callJsonValues()">
+    <section id="header">
+        <div class="row contents">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 mt-5 home-search-section">
+                <center>
+                    <h2>Search Your Desired Home</h2>
+                </center>
+                <div class="search">
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search House"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-md btn-default m-0 px-3 py-2 z-depth-0 waves-effect"
+                                    type="button" id="button-addon2" onclick="search()"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group col-md-3">
+                                <select class="browser-default custom-select" onchange="setHouseType(event.target.value)"
+                                id="houseType">
+                                    <option selected>Choose House Type</option>
+                                  </select>
+                            </div>
+                            <div class="input-group col-md-6">
+                                <div class="form-row">
+                                    <div class="input-group col-md-6">
+                                        <input type="text" class="form-control" oninput="setMinimumAmount(event.target.value)"
+                                        placeholder="Min">
+                                    </div>
+                                    <div class="input-group col-md-6">
+                                        <input type="text" class="form-control" oninput="setMaximumAmount(event.target.value)"
+                                        placeholder="Max">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group col-md-3">
+                                <select class="browser-default custom-select" id="roomList">
+                                    
+                                  </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </section>
+
+
+
+
+
+    
+    <script src="../javascript/Custom/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+body {
+  background: #F2F2F2;
+  margin: 0;
+  padding: 0
+}
+.login-heading{
+  font-size: 25px;
+  font-weight: bolder;
+}
+.login-section {
+  width: 380px !important;
+  background: #fff;
+  padding: 35px 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-section p {
+  text-align: center;
+}
+
+#login_btn {
+  background: #219653 !important;
+  /* Green 1 */
+
+  border: 1px solid #219653;
+  box-sizing: border-box;
+}

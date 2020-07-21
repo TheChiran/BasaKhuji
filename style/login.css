@@ -1,0 +1,16 @@
+body{
+  background: #F2F2F2;
+  margin:0;
+  padding:0
+}
+.login-section{
+  background: #fff;
+  padding: 25px 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.login-section p{
+  text-align: center;
+}
