@@ -1,0 +1,29 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.custom-navbar{
+    background: transparent !important;
+    box-shadow: none !important;
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: 1px solid #E5E5E5 !important;
+} 
+.custom-navbar .navbar-brand{
+    color: #000;
+}
+.custom-navbar ul li{
+    /* background: #27AE60; */
+    /* background: rgba(255, 255, 255, 0.8); */
+    margin-right: 15px;
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+.custom-navbar ul li a{
+    /* color: #E5E5E5 !important; */
+    color:  #333333 !important;
+}
+#logo{
+    width: 135px;
+    height: 135px;
+}

@@ -31,22 +31,8 @@ function houseTypeList() {
 }
 
 function roomNoList() {
-    var roomList = [{
-            "roomNum": ""
-        }, {
-            "roomNum": "1"
-        }, {
-            "roomNum": "2"
-        }, {
-            "roomNum": "3"
-        },
-        {
-            "roomNum": "4"
-        }, {
-            "roomNum": "5"
-        }, {
-            "roomNum": "6"
-        }
+    var roomList = [{"roomNum": ""}, {"roomNum": "1"}, {"roomNum": "2"}, 
+        {"roomNum": "3"},{"roomNum": "4"}, {"roomNum": "5"}, {"roomNum": "6"}
     ];
     var roomValues = '';
 
@@ -66,6 +52,7 @@ function roomNoList() {
 function startFunctionOnPageLoad() {
     houseTypeList();
     roomNoList();
+    addFooter();
 }
 
 //to set house type for search purpose
@@ -144,3 +131,6 @@ function search() {
 
 }
 
+function addFooter(){
+    $('#footer').load('../../pages/footer.html');
+}
