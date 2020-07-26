@@ -51,8 +51,8 @@
             </div>
           </form>
           <!-- Login form group -->
-          <button class="btn btn-md btn-primary btn-block" id="login_btn" onclick="loginUser()">Login</button>
-          <p class="mt-2">Don't have account? <a href="register.html">Register</a></p>
+          <button class="btn btn-md btn-primary btn-block" id="login_btn" onclick="login()">Login</button>
+          <p class="mt-2">Don't have account? <a href="register.php">Register</a></p>
           <p><a href="">Forgot password</a></p>
         </div>
       </div>

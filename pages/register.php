@@ -60,7 +60,7 @@
                     </form>
                     <!-- Login form group -->
                     <button class="btn btn-md btn-primary btn-block" id="register_btn" onclick="register()">Register</button>
-                    <p class="mt-2">Already registered? <a href="login.html">Login</a></p>
+                    <p class="mt-2">Already registered? <a href="login.php">Login</a></p>
                 </div>
             </div>
             <div class="col-md-4"></div>
