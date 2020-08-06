@@ -18,7 +18,8 @@
             echo "<th>Status</th>";
             echo "<th>Type</th>";
             echo "<th>Image</th>";
-            echo "<th>Actions</th>";
+            echo "<th></th>";
+            echo "<th></th>";
             echo "</tr>";
             foreach($result as $house){
                 echo "<tr>";
@@ -34,8 +35,10 @@
                     <button class='btn btn-sm btn-outline-success'>See Images</button>
                 </td>";
                 echo "<td>
-                        <button class='btn btn-sm btn-warning'>Edit</button>
-                        <button class='btn btn-sm btn-danger'>Delete</button>
+                        <button class='btn btn-sm btn-warning' onclick='getHouse(".$house['id'].")'>Edit</button>
+                    </td>";
+                echo "<td>
+                        <button class='btn btn-sm btn-danger' onclick='deleteHouse(".$house['id'].")'>Delete</button>
                     </td>";
                 echo "</tr>";
             }

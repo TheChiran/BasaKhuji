@@ -71,7 +71,7 @@
                 <div class="col-md-5">
                     <div class="card" id="add_house_card" style="display: none">
                         <div class="card-header">
-                            <h4>Add New House</h4>
+                            <h4 id="addHouseBoxHeading"></h4>
                             <div class="alert alert-warning" id="emptyFieldErrorBox" style="display: none">
                                 <h3 id="emptyFieldErrorMsg"></h3>
                             </div>
@@ -79,7 +79,7 @@
                         <div class="card-body">
                             <form action="">
                                 <div class="form-row">
-                                    <label for="">House Address</label>
+                                    <label for="" >House Address</label>
                                     <input type="text" class="form-control" id="house_address"
                                     placeholder="Enter House Address;e.g. ka-22/2/A,Kalachandpur" onchange="setHouseAddress(event.target.value)">
                                 </div>
@@ -121,7 +121,7 @@
                         <div class="card-footer">
                             <div class="action-button" style="display:flex">
                             <button class="btn btn-sm btn-block btn-outline-success" onclick="addHouse()">
-                                <span>Create</span>
+                                <span>Save</span>
                             </button>
                             
                             </div>

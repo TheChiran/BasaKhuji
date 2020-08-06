@@ -16,6 +16,14 @@
             }
             return true;
         }
+        public function deleteHouse($query){
+            $result = $this->con->query($query);
+
+            if($result==false){
+                return false;
+            }
+            return true;
+        }
 
         public function getHouseList($query){
             $result = $this->con->query($query);
@@ -31,20 +39,18 @@
             return $house_list;
         }
 
-        public function getSingleHouse($query){
+        public function getHouse($query){
             $result = $this->con->query($query);
-            if($result==true){
-                $userCount = $result->fetch_assoc(); 
-                $userCount = $userCount['userCount'];
-                if($userCount>0){
-                    return $userCount;
-                } else{
-                    return false;
-                }
-                
-            }else{
+            if($result==false){
                 return false;
             }
+            $house_list = array();
+
+            while($house_fetch = $result->fetch_assoc()){
+                $house_list[] = $house_fetch;
+            }
+
+            return $house_list;
         }
     }
 

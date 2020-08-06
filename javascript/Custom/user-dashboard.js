@@ -47,6 +47,8 @@ function getHouseDescription(){
 function showAddHouseCard(){
     $('#add_house_card').show(500);
     showAddHouseCardCloseButton();
+    resetAddHouseForm();
+    setAddHouseFormCardheading();
 }
 function hideAddHouseCard(){
     $('#add_house_card').hide(500);
@@ -57,6 +59,9 @@ function showAddHouseCardCloseButton(){
 }
 function hideAddHouseCardCloseButton(){
     $('#addHouseCardBtn').hide();
+}
+function setAddHouseFormCardheading(){
+    $('#addHouseBoxHeading').html('Add New House');
 }
 function callMethodOnLoad(){
     hideAddHouseCard();
@@ -70,27 +75,31 @@ function addHouse(){
         if(isHouseFormEmpty() == true){
             displayEmptyError();
         }else{
-            $.ajax({
-                url:"house/add-house.function.php",
-                type:"post",
-                data:{
-                    address: getHouseAddress(),
-                    area: getHouseLocation(),
-                    type: getHouseType(),
-                    amount: getHouseAmount(),
-                    bath: getHouseBathroom(),
-                    bed: getHouseBedroom(),
-                    description: getHouseDescription()
-                },
-                success: function(response){
-                    if(response==false){
-
-                    }else{
-                        resetAddHouseForm();
-                        getHouseList();
+            if(confirm('Are you sure?You want to add this house?')){
+                $.ajax({
+                    url:"house/add-house.function.php",
+                    type:"post",
+                    data:{
+                        address: getHouseAddress(),
+                        area: getHouseLocation(),
+                        type: getHouseType(),
+                        amount: getHouseAmount(),
+                        bath: getHouseBathroom(),
+                        bed: getHouseBedroom(),
+                        description: getHouseDescription()
+                    },
+                    success: function(response){
+                        if(response==false){
+    
+                        }else{
+                            resetAddHouseForm();
+                            getHouseList();
+                        }
                     }
-                }
-            })
+                })
+            }else{
+                resetAddHouseForm();
+            }
         }
     }
 }
@@ -119,7 +128,58 @@ function getHouseList(){
         }
     })
 }
+//to delete a house
+function deleteHouse(id){
+    if(confirm('Are you sure?you want to delete this house?')){
+        $.ajax({
+            url:"house/delete-house.function.php",
+            type:"post",
+            data: {
+                id: id
+            },
+            success: function(response){
+                if(response==true){
+                    alert('Succesfully deleted!');
+                    getHouseList();
+                }
+            
+            }
+        })
+    }
+}
+//to edit a house
+function getHouse(id){
+    $.ajax({
+        url:"house/get-single-house.function.php",
+        type:"post",
+        data: {
+            id: id
+        },
+        success: function(response){
+            var houseObj = JSON.parse(response);
+            // console.log(houseObj);
+            showAddHouseCard();
+            setEditValues(houseObj[0]);
+            changeAddHouseFormCardHeading();
+        }
+    })
+}
+//method to give recived values to house form
+function setEditValues(house){
+    //console.log(house.address);
+    $('#house_address').val(house.address);
+    $('#house_location').val(house.area);
+    $('#bed_room').val(house.bedroom);
+    $('#bath_room').val(house.bathroom);
+    $('#house_amount').val(house.amount);
+    $('#house_type').val(house.type);
+    $('#house_description').val(house.description);
+}
+//to change heading of add new house to edit house
+function changeAddHouseFormCardHeading(){
+    document.getElementById('addHouseBoxHeading').innerHTML='Edit House';
 
+}
 //method to check if all fields are undefined or not
 function isHouseFormUndefined(){
     if( getHouseAddress() == undefined || getHouseLocation() == undefined || getHouseAmount() == undefined ||
