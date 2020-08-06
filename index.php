@@ -28,14 +28,14 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav ml-auto">
-                                <li class="nav-item">
+                            <ul class="navbar-nav ml-auto" id="user-navbar">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" href="pages/login.php">Sign-In 
                                         <span><i class="fa fa-sign-in" aria-hidden="true"></i></span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="pages/register.php">Sign-up <span><i class="fa fa-user-plus" aria-hidden="true"></i></span></a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </nav>
@@ -97,7 +97,7 @@
         <div class="container">
             <div class="row mt-5">
                 <div class="col-md-5 card home-section">
-                    <div class="home-image">
+                    <div class="home-image mt-3">
                         <a href="">
                             <img src="images/home/house.jpg" alt="">
                         </a>
@@ -122,7 +122,7 @@
                                 <div class="col-md-6 home-person">
                                     <span class="card-icon"><i class="fa fa-long-arrow-right"
                                             aria-hidden="true"></i></span>
-                                    <h5><a href="">See Details</a></h5>
+                                    <h5><a href="pages/home-single.php">See Details</a></h5>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-5 card home-section">
-                    <div class="home-image">
+                    <div class="home-image mt-3">
                         <a href="">
                             <img src="images/home/house.jpg" alt="">
                         </a>
@@ -155,7 +155,7 @@
                                 <div class="col-md-6 home-person">
                                     <span class="card-icon"><i class="fa fa-long-arrow-right"
                                             aria-hidden="true"></i></span>
-                                    <h5><a href="">See Details</a></h5>
+                                    <h5><a href="pages/home-single.php">See Details</a></h5>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,11 @@
 
 
 
-    <div id="footer"></div>
+    <div id="footer">
+        <?php 
+            include "pages/footer.php";
+        ?>
+    </div>
 
     <script src="javascript/Custom/index.js"></script>
 </body>

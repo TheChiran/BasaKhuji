@@ -84,7 +84,7 @@ function getUserPassword(){
     return password;
 }
 function getUserRole(){
-    return getUserRole;
+    return userRole;
 }
 
 function invalidEmail(){

@@ -25,13 +25,13 @@
         <div class="login-form mt-5">
           <!-- Login form group -->
           <div class="alert alert-warning alert-dismissible fade show" role="alert" id="errorMsgBox" style="display: none;">
-            <strong>Hey beauty/handsome!</strong> <span id="errorMessage">Can you fill all the fields please!</span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+            <strong></strong> <span id="errorMessage"></span>
+            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </button> -->
           </div>
           <div class="alert alert-success alert-dismissible fade show" role="alert" id="successMsgBox" style="display: none;">
-            <strong>Congrats!</strong> <span id="errorMessage">You have succesfully registered, have a nice day!</span>
+            <strong>Congrats!</strong> <span id="errorMessage">You have succesfully logged in, have a nice day!</span>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

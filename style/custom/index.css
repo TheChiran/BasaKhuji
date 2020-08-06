@@ -54,6 +54,10 @@ body{
     width: 100% !important;
     height: 320px;
 }
+.home-image{
+    padding: 0 !important;
+    margin: 0 !important;
+}
 .home-person{
     display: flex;
 }

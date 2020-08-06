@@ -17,6 +17,12 @@ function validationSuccess(){
 }
 function validationFailed(){
     document.getElementById('errorMsgBox').style="display:block";
+    setTimeout(function(){
+        closeValidationErrorBox();
+    },2000);
+}
+function closeValidationErrorBox(){
+    document.getElementById('errorMsgBox').style="display:none";
 }
 
 function login(){
@@ -30,18 +36,22 @@ function login(){
                 password: getUserPassword()
             },
             success: function(response){
-                if(response == 1 || response == true){
+                if(response != false){
                     validationSuccess();
                     resetForm();
-                    console.log(response);
-                    // setTimeout(function(){
-                    //     window.location.href = "../index.php";
-                    // },2000);
+                    setAccess(response);
+                    setTimeout(function(){
+                        window.location.href = "../index.php";
+                    },2000);
                 }
                 else{
                     loginFailed();
                 }
                 
+            },
+            error: function(error){
+                console.log(error);
+                loginFailed();
             }
         });
         
@@ -61,11 +71,19 @@ function getUserPassword(){
 }
 
 function loginFailed(){
-    console.log('Something went wrong!');
+    validationFailed();
+    document.getElementById('errorMessage').innerHTML="Invalid user or password! Please try again";
+    resetForm();
+    //console.log('Something went wrong!');
 }
 function resetForm(){
     document.getElementById('username').value = '';
     document.getElementById('userPassword').value = '';
+}
+
+function setAccess(access){
+    localStorage.setItem('access',access);
+    //console.log(localStorage.getItem('access'));
 }
 
 

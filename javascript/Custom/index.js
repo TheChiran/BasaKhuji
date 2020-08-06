@@ -53,6 +53,8 @@ function startFunctionOnPageLoad() {
     houseTypeList();
     roomNoList();
     addFooter();
+    checkAccess();
+    //console.log(checkAccess());
 }
 
 //to set house type for search purpose
@@ -121,16 +123,65 @@ function isEmpty() {
         return false;
     }
 }
+//to get access
+function getAccess(){
+    var access = localStorage.getItem('access');
+    return access!=undefined?access: undefined;
+}
+
+//to checl if user is logged in or not
+function checkAccess(){
+    if(getAccess()==undefined){
+        loggedOutNavbar();
+    }else{
+        loggedInNavbar();
+    }
+}
+
+var navItems = '';
+//to set logged in user nav items
+function loggedInNavbar(){
+    navItems='';
+    navItems+='<li class="nav-item">';
+    navItems+='<a class="nav-link btn btn-md btn-default-outline" onclick="sign_out()"><span><i class="fa fa-arrow-left" aria-hidden="true"></i></span>';
+    navItems+='Sign-out </a>';
+    navItems+='</li>';
+    navItems+='<li class="nav-item">';
+    navItems+='<a class="nav-link btn btn-md btn-default-outline" href="pages/user-dashboard.php">User Dashboard ';
+    navItems+='<span><i class="fa fa-home" aria-hidden="true"></i></span>';
+    navItems+='</a>';
+    navItems+='</li>';
+    document.getElementById('user-navbar').innerHTML = navItems;
+}
+//to set nav items for logged-out navbar
+function loggedOutNavbar(){
+    navItems='';
+    navItems+='<li class="nav-item">';
+    navItems+='<a class="nav-link btn btn-md btn-default-outline" href="pages/login.php">Sign-In ';
+    navItems+='<span><i class="fa fa-sign-in" aria-hidden="true"></i></span></a>';
+    navItems+='</li>';
+    navItems+='<li class="nav-item">';
+    navItems+='<a class="nav-link btn btn-md btn-default-outline" href="pages/register.php">Sign-up ';
+    navItems+='<span><i class="fa fa-user-plus" aria-hidden="true"></i></span></a>';
+    navItems+='</li>';
+    document.getElementById('user-navbar').innerHTML = navItems;
+}
+
+//to sign-out
+function sign_out(){
+    localStorage.removeItem('access');
+    loggedOutNavbar();
+}
 //to search according 
 function search() {
-    console.log(getMaximumAmount());
-    console.log(getMinimumAmount());
-    console.log(getHouseType());
-    console.log(getRoomNumber());
-    console.log(getHomeArea());
+    // console.log(getMaximumAmount());
+    // console.log(getMinimumAmount());
+    // console.log(getHouseType());
+    // console.log(getRoomNumber());
+    // console.log(getHomeArea());
 
 }
 
 function addFooter(){
-    $('#footer').load('../../pages/footer.html');
+    // $('#footer').load('../../pages/footer.php');
 }

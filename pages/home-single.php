@@ -17,7 +17,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
-            <a class="navbar-brand" href="../index.html">
+            <a class="navbar-brand" href="../index.php">
                 <img src="../images/logo/logo.png" alt="" id="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -27,11 +27,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/login.html">Sign-In
+                        <a class="nav-link" href="../pages/login.php">Sign-In
                             <span><i class="fa fa-sign-in" aria-hidden="true"></i></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/register.html">Sign-up <span><i class="fa fa-user-plus"
+                        <a class="nav-link" href="../pages/register.php">Sign-up <span><i class="fa fa-user-plus"
                                     aria-hidden="true"></i></span></a>
                     </li>
                 </ul>
