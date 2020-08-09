@@ -120,9 +120,11 @@
                         </div>
                         <div class="card-footer">
                             <div class="action-button" style="display:flex">
-                            <button class="btn btn-sm btn-block btn-outline-success" onclick="addHouse()">
+                            <button class="btn btn-sm btn-block btn-outline-success" onclick="save()">
                                 <span>Save</span>
                             </button>
+                            
+                            <span id="actionType"></span>
                             
                             </div>
                         </div>
@@ -136,13 +138,98 @@
         <!-- house list -->
             <div class="row mt-5">
                 <div class="col-md-12">
+                    <!-- to show list of houses -->
                     <div id="houseList"></div>
                 </div>
             </div>
         </div>
     </section>
 
- 
+    <!-- modal -->
+     <div class="modal fade" id="houseImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">House images</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- house-image-form -->
+        <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="house-images">
+                <!--Carousel Wrapper-->
+                <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                    <!--Indicators-->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+                    </ol>
+                    <!--/.Indicators-->
+                    <!--Slides-->
+                    <div class="carousel-inner" role="listbox">
+                        <!--First slide-->
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"
+                                alt="First slide">
+                        </div>
+                        <!--/First slide-->
+                        <!--Second slide-->
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"
+                                alt="Second slide">
+                        </div>
+                        <!--/Second slide-->
+                        <!--Third slide-->
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"
+                                alt="Third slide">
+                        </div>
+                        <!--/Third slide-->
+                    </div>
+                    <!--/.Slides-->
+                    <!--Controls-->
+                    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <!--/.Controls-->
+                </div>
+                <!--/.Carousel Wrapper-->
+                <button class="btn btn-sm btn-outline-success">Add new image</button>
+                <div class="house-image-upload">
+                <div class="form-row">
+                    <label for="" >House Image</label>
+                    <input type="file" class="form-control" id="house_image">
+                </div>
+                <div class="form-row">
+                    <button class="btn btn-sm btn-outline-success" onclick="uploadImage()">Save</button>
+                </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+ </div>
 
 
 

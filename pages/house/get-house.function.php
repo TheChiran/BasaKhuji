@@ -32,7 +32,8 @@
                 echo "<td>".$house['status']."</td>";
                 echo "<td>".$house['type']."</td>";
                 echo "<td>
-                    <button class='btn btn-sm btn-outline-success'>See Images</button>
+                    <button class='btn btn-sm btn-outline-success' 
+                    data-toggle='modal' data-target='#houseImageModal'>See Images</button>
                 </td>";
                 echo "<td>
                         <button class='btn btn-sm btn-warning' onclick='getHouse(".$house['id'].")'>Edit</button>

@@ -9,7 +9,7 @@
 
     public function getConnection(){
       if(empty($this->con)){
-        $this->con = new mysqli($this->_host,$this->_dbuser,"",$this->_dbname);
+        $this->con = new mysqli($this->_host,$this->_dbuser,$this->_dbpass,$this->_dbname);
         if($this->con){
           return $this->con;
         }else {

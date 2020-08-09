@@ -24,7 +24,14 @@
             }
             return true;
         }
+        public function updateHouse($query){
+            $result = $this->con->query($query);
 
+            if($result==false){
+                return false;
+            }
+            return true;
+        }
         public function getHouseList($query){
             $result = $this->con->query($query);
             if($result==false){
