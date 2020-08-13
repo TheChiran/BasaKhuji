@@ -286,18 +286,72 @@ function uploadImage(){
     if(house_image !=undefined){
         var form_data = new FormData();
         form_data.append('house_image',house_image);
-        $.ajax({
-            url: 'house/add-house-image.function.php',
-            type: 'post',
-            contentType: false,
-            processData: false,
-            data: form_data,
-            success: function(response){
-                console.log(response);
-            }
-        });
+        form_data.append('house_id',getHouseId());
+        var fileSize = Math.round(house_image.size/1024);
+        if(isFileSizeOk(fileSize)===true){
+            $.ajax({
+                url: 'house/add-house-image.function.php',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                data: form_data,
+                success: function(response){
+                    // console.log(response);
+                    if(response==true){
+                        alert('New image uploaded');
+                        resetFormInput();
+                        getHouseImageList(getHouseId());
+                    }else{
+                        console.log(response);
+                    }
+                }
+            });
+        }else{
+            // console.log('Your file is too large!');
+            fileToLargeErrorMsg();
+            resetFormInput();
+        }
+        //console.log(checkFileExtention(house_image));
+        
     }else{
         console.log('There was some problem');
     }
     
+}
+//to reset file input to null
+function resetFormInput(){
+    $('#house_image').val('');
+}
+
+//to check file size
+function isFileSizeOk(fileSize){
+    var maxFileSize = 1024*2;
+    if(fileSize > maxFileSize){
+        return false;
+    }else if(fileSize <=maxFileSize){
+        return true;
+    }
+}
+//to show file too large error
+function fileToLargeErrorMsg(){                     
+    var content = '';
+    content+='<div class="alert alert-warning">';
+    content+='<h2>File is too large!</h2>';
+    content+='</div>';
+    $('#fileTooLargeerrorMsg').html(content);
+}
+//function get houseImages
+function getHouseImageList(id){
+    setHouseId(id);
+    $.ajax({
+        url: 'house/get-house-image.function.php',
+        type: 'post',
+        data:{
+            houseId: id
+        },
+        success: function(response){
+            // console.log(response);
+            $('#image-carousel').html(response);
+        }
+    })
 }

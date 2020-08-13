@@ -16,6 +16,14 @@
             }
             return true;
         }
+        public function addHouseImage($query){
+            $result = $this->con->query($query);
+
+            if($result==false){
+                return false;
+            }
+            return true;
+        }
         public function deleteHouse($query){
             $result = $this->con->query($query);
 
