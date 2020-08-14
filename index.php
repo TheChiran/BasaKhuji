@@ -51,7 +51,7 @@
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" oninput="setHomeArea(event.target.value)"
                                 placeholder="Search House With Your Desired Location" aria-label="Recipient's username"
-                                aria-describedby="button-addon2">
+                                aria-describedby="button-addon2" id="houseArea">
                             <div class="input-group-append">
                                 <button class="btn btn-md btn-default m-0 px-3 py-2 z-depth-0 waves-effect" type="button"
                                     onclick="search()"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -67,11 +67,12 @@
                             <div class="input-group col-md-6">
                                 <div class="form-row">
                                     <div class="input-group col-md-6">
-                                        <input type="text" class="form-control"
-                                            oninput="setMinimumAmount(event.target.value)" placeholder="Min">
+                                        <input type="text" class="form-control" id="minimumAmount"
+                                            oninput="setMinimumAmount(event.target.value)" 
+                                            placeholder="Min">
                                     </div>
                                     <div class="input-group col-md-6">
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control" id="maximumAmount"
                                             oninput="setMaximumAmount(event.target.value)" placeholder="Max">
                                     </div>
                                 </div>
@@ -95,74 +96,9 @@
     </section>
     <section id="houseList">
         <div class="container">
-            <div class="row mt-5">
-                <div class="col-md-5 card home-section">
-                    <div class="home-image mt-3">
-                        <a href="">
-                            <img src="images/home/house.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="home-contents mt-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6 home-person">
-                                    <span class="card-icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
-                                    <h5>Tonmoy Chiran</h5>
-                                </div>
-                                <div class="col-md-6 home-person">
-                                    <span class="card-icon"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                    <h5>July 25,2020</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 home-person">
-                                    <span class="card-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                                    <h5>Baridhara</h5>
-                                </div>
-                                <div class="col-md-6 home-person">
-                                    <span class="card-icon"><i class="fa fa-long-arrow-right"
-                                            aria-hidden="true"></i></span>
-                                    <h5><a href="pages/home-single.php">See Details</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-5 card home-section">
-                    <div class="home-image mt-3">
-                        <a href="">
-                            <img src="images/home/house.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="home-contents mt-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6 home-person">
-                                    <span class="card-icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
-                                    <h5>Tonmoy Chiran</h5>
-                                </div>
-                                <div class="col-md-6 home-person">
-                                    <span class="card-icon"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                    <h5>July 25,2020</h5>
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6 home-person">
-                                    <span class="card-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                                    <h5>Baridhara</h5>
-                                </div>
-                                <div class="col-md-6 home-person">
-                                    <span class="card-icon"><i class="fa fa-long-arrow-right"
-                                            aria-hidden="true"></i></span>
-                                    <h5><a href="pages/home-single.php">See Details</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row mt-5" id="house_list">
             </div>
-            <div class="row mt-5">
+            <!-- <div class="row mt-5">
                 <div class="pagination">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination pg-blue">
@@ -180,7 +116,7 @@
                         </ul>
                     </nav>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 

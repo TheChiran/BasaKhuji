@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
-                        <a class="navbar-brand" href="">
+                        <a class="navbar-brand" href="../index.php">
                             <img src="../images/logo/logo.png" alt="" id="logo">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"

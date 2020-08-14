@@ -1,9 +1,23 @@
+
+var houseId;
+
+//to set house id to get single page
+function setHouseId(id){
+    houseId = id;
+}
+
+//to get house id
+function getHouseId(){
+    return houseId;
+}
+
+//house type list
 function houseTypeList() {
     var houseTypeList = [{
             "name": "Choose House Type"
         },
         {
-            "name": "Rental"
+            "name": "Rent"
         },
         {
             "name": "Sell"
@@ -30,6 +44,7 @@ function houseTypeList() {
 
 }
 
+//function to display room number
 function roomNoList() {
     var roomList = [{"roomNum": ""}, {"roomNum": "1"}, {"roomNum": "2"}, 
         {"roomNum": "3"},{"roomNum": "4"}, {"roomNum": "5"}, {"roomNum": "6"}
@@ -54,6 +69,7 @@ function startFunctionOnPageLoad() {
     roomNoList();
     addFooter();
     checkAccess();
+    getHouseList();
     //console.log(checkAccess());
 }
 
@@ -65,7 +81,7 @@ function setHouseType(type) {
 }
 //to get or return house type value
 function getHouseType() {
-    return house_type;
+    return (house_type === undefined) ? undefined : house_type;
 }
 
 //global variable to store total room numbers
@@ -76,7 +92,7 @@ function setRoomNumber(roomNum) {
 }
 //to get/return room number
 function getRoomNumber() {
-    return room_num;
+    return (room_num === undefined) ? undefined : room_num;
 }
 
 //global variable to set minimum amount for rent
@@ -88,7 +104,7 @@ function setMinimumAmount(min_amount) {
 }
 //function to get minimum amount
 function getMinimumAmount() {
-    return min_rent_amount;
+    return (min_rent_amount === undefined) ? undefined : min_rent_amount;
 }
 
 //global variable to set Maximum amount for rent
@@ -100,7 +116,7 @@ function setMaximumAmount(max_amount) {
 }
 //function to get Maximum amount
 function getMaximumAmount() {
-    return max_rent_amount;
+    return (max_rent_amount === undefined) ? undefined : max_rent_amount;
 }
 
 //variable to store location
@@ -111,22 +127,14 @@ function setHomeArea(area) {
 }
 //to get location/area
 function getHomeArea() {
-    return home_area;
+    return (home_area === undefined) ? undefined : home_area;
 }
 
 
-function isEmpty() {
-    if (getHouseType() & getHomeArea() == undefined & getRoomNumber() == undefined &
-        getMinimumAmount() == undefined & getMaximumAmount() == undefined) {
-        return true;
-    } else {
-        return false;
-    }
-}
 //to get access
 function getAccess(){
     var access = localStorage.getItem('access');
-    return access!=undefined?access: undefined;
+    return access != undefined ? access: undefined;
 }
 
 //to checl if user is logged in or not
@@ -172,8 +180,53 @@ function sign_out(){
     localStorage.removeItem('access');
     loggedOutNavbar();
 }
-//to search according 
+//to reset search fields
+function resetSearchFields(){
+    $('#houseArea').val('');
+    $('#houseType').val('');
+    $('#minimumAmount').val('');
+    $('#maximumAmount').val('');
+    $('#roomList').val('');
+}
+//to check is all search fields are empty
+//if all fields are empty then error message will show
+
+function isSearchFieldEmpty() {
+    if (getHouseType() ===undefined && getHomeArea() == undefined && getRoomNumber() == undefined &
+        getMinimumAmount() == undefined && getMaximumAmount() == undefined) {
+        return true;
+    } else {
+        return false;
+    }
+}
+//to search according to user requirement
 function search() {
+    if(isSearchFieldEmpty() === true){
+        alert("At least one field is required!");
+        resetSearchFields();
+    }else{
+        var houseType,houseArea,maxAmount,minAmount,roomNumber;
+         (getHouseType()==undefined)?houseType ='': houseType=getHouseType();
+         (getHomeArea()==undefined)? houseArea = '': houseArea = getHomeArea();
+         (getMaximumAmount()==undefined) ? maxAmount = '' : maxAmount = getMaximumAmount();
+         (getMinimumAmount()==undefined) ? minAmount = '' : minAmount = getMinimumAmount();
+         (getRoomNumber()==undefined) ? roomNumber = '' : roomNumber = getRoomNumber();
+         $.ajax({
+            url:'pages/house/get-filtered-house.function.php',
+            type: 'post',
+            data:{
+                type: houseType,
+                area: houseArea,
+                max: maxAmount,
+                min: minAmount,
+                room: roomNumber
+            },
+            success: function(response){
+                changeResponseData(response);
+                resetSearchFields();
+            }
+         });
+    }
     // console.log(getMaximumAmount());
     // console.log(getMinimumAmount());
     // console.log(getHouseType());
@@ -181,7 +234,36 @@ function search() {
     // console.log(getHomeArea());
 
 }
-
+//to change values on search and on click
+function changeResponseData(data){
+    $('#house_list').html(data);
+}
+//
 function addFooter(){
     // $('#footer').load('../../pages/footer.php');
+}
+//to get all house list
+function getHouseList(){
+    $.ajax({
+        url: 'pages/house/get-all-house-info.function.php',
+        type: 'get',
+        success: function(response){
+            // console.log(response);
+            changeResponseData(response);
+        }
+    })
+}
+//to get single house list
+function getSingleHouse(id){
+    $.ajax({
+        url: 'pages/house/get-single-house.function.php',
+        type: 'post',
+        data:{
+            id: id
+        },
+        success: function(response){
+            // console.log(response);
+            changeResponseData(response);
+        }
+    })
 }

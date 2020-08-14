@@ -1,8 +1,19 @@
 <?php
     include_once("house.class.php");
     $houseObj = new House();
-
-    $query = "SELECT id,area FROM house LIMIT 10";
+    $type = $_POST['type'];
+    $area = $_POST['area'];
+    $max = $_POST['max'];
+    $min = $_POST['min'];
+    $room = $_POST['room'];
+    $query = "SELECT * FROM house 
+    WHERE area='$area' 
+    OR 
+    amount BETWEEN '$min' AND '$max' 
+    OR
+    type ='$type'
+    OR
+    bedroom = '$room'";
     if($result = $houseObj->getHouse($query)){
         if(empty($result)){
             echo false;
