@@ -60,7 +60,7 @@ function setRequestActionType(action){
 function getRequestActionType(){
     return request_action;
 }
-
+//to make add house card box visible
 function showAddHouseCard(){
     $('#add_house_card').show(500);
     showAddHouseCardCloseButton();
@@ -68,7 +68,7 @@ function showAddHouseCard(){
     setAddHouseFormCardheading();
     
 }
-
+//to make add house card box imvisible 
 function hideAddHouseCard(){
     $('#add_house_card').hide(500);
     hideAddHouseCardCloseButton();
@@ -84,9 +84,19 @@ function setAddHouseFormCardheading(){
     $('#addHouseBoxHeading').html('Add New House');
 }
 function callMethodOnLoad(){
-    hideAddHouseCard();
-    getHouseList();
-    setRequestActionType('POST');
+    if(checkIsUserHasAccess() == true){
+        hideAddHouseCard();
+        getHouseList();
+        setRequestActionType('POST');
+        // console.log(localStorage.getItem('userID'));
+    }else{
+        $('#user-dashboard-body').html('Sorry!there is no page of this name!');
+        window.location.href="../index.php";
+    }
+}
+//to check if user has acces or not if not then redirect page to home
+function checkIsUserHasAccess(){
+    return (localStorage.getItem('access') == undefined) ? false : true;
 }
 //to save form data
 function save(){
@@ -126,7 +136,8 @@ function addHouse(){
                 amount: getHouseAmount(),
                 bath: getHouseBathroom(),
                 bed: getHouseBedroom(),
-                description: getHouseDescription()
+                description: getHouseDescription(),
+                userId: localStorage.getItem('userID')
             },
             success: function(response){
                 if(response==false){
@@ -155,7 +166,10 @@ function resetAddHouseForm(){
 function getHouseList(){
     $.ajax({
         url:"house/get-house.function.php",
-        type:"get",
+        type:"post",
+        data:{
+            userId: localStorage.getItem('userID')
+        },
         success: function(response){
             if(response.length>0){
                 $('#houseList').html(response);
@@ -189,7 +203,7 @@ function deleteHouse(id){
 //to get a house information
 function getHouse(id){
     $.ajax({
-        url:"house/get-single-house.function.php",
+        url:"house/get-house-single.user.function.php",
         type:"post",
         data: {
             id: id
@@ -355,3 +369,12 @@ function getHouseImageList(id){
         }
     })
 }
+//to sign out a user
+function logout(){
+    if(confirm('Are you sure? you want to logout?')){   
+        localStorage.removeItem('userID');
+        localStorage.removeItem('access');
+        window.location.href="../index.php";
+    }
+}
+

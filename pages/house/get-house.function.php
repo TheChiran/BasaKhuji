@@ -1,8 +1,8 @@
 <?php
     include_once("house.class.php");
     $house = new House();
-
-    $query = "SELECT * FROM `house`";
+    $userId = $_POST['userId'];
+    $query = "SELECT * FROM `house` WHERE userId = '$userId'";
     if($result = $house->getHouseList($query)){
         if(empty($result)){
             echo "There is no data";

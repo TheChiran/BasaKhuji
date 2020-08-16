@@ -128,6 +128,9 @@
             include "pages/footer.php";
         ?>
     </div>
+    <div id="restart-icon" onclick="refreshPage()">
+        <span><i class="fa fa-refresh" aria-hidden="true"></i></span>
+    </div>
 
     <script src="javascript/Custom/index.js"></script>
 </body>

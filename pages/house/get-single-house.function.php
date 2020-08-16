@@ -27,14 +27,14 @@
                     echo'</ol>';
                     echo'<div class="carousel-inner" role="listbox">';
                     $index = 0;
-                    foreach($houseImage as $house){
+                    foreach($houseImage as $houseImage){
                         if($index==0){
                             echo'<div class="carousel-item active">';
                         }else{
                             echo'<div class="carousel-item">';
                         }
                         echo'<img class="d-block w-100"
-                            src="../../uploads/'.$house['image'].'"
+                            src="../../uploads/'.$houseImage['image'].'"
                             alt="First slide" style="height: 350px">';
                         echo'</div>';
                         $index++;
@@ -55,14 +55,14 @@
                 echo '<div class="col-md-12">';
                 echo '<div class="house-contents">';
                 echo  '<h5 class="amount">BDT 18,000</h5>';
-                        echo '<h5 class="location mt-5">ka-22/2/A,Kalachandpur</h5>';
+                        echo '<h5 class="location mt-5">'.$house['address'].'</h5>';
                         echo '<div class="icons mt-5">';
                            echo '<div class="form-row">';
                             echo    '<div class="input-group col-md-2">';
-                                  echo '<span style="margin-right: 5px;"><i class="fa fa-bed" aria-hidden="true"></i></span> 2 Bed
+                                  echo '<span style="margin-right: 5px;"><i class="fa fa-bed" aria-hidden="true"></i></span> '.$house['bedroom'].' Bed
                                 </div>';
                                 echo '<div class="input-group col-md-2">
-                                    <span style="margin-right: 5px;"><i class="fa fa-bath" aria-hidden="true"></i></span> 2 Baths
+                                    <span style="margin-right: 5px;"><i class="fa fa-bath" aria-hidden="true"></i></span> '.$house['bathroom'].' Baths
                                 </div>';
                                 echo '<div class="input-group col-md-2">
                                     <span style="margin-right: 5px;"><i class="fa fa-th-large" aria-hidden="true"></i></span> 750sqft
@@ -78,7 +78,7 @@
                                                 echo '<p>Type</p>';
                                             echo '</div>';
                                             echo '<div class="input-group col-md-6" >';
-                                                echo '<p id="apartment">Apartment</p>';
+                                                echo '<p id="apartment">'.$house['type'].'</p>';
                                             echo '</div>';
                                     echo '</div>';
                                     echo '<div class="input-group col-md-6">';
@@ -99,7 +99,7 @@
                                                 echo '<p>Price</p>';
                                             echo '</div>';
                                             echo '<div class="input-group col-md-6">';
-                                                echo '<p>BDT 18,000</p>';
+                                                echo '<p>'.$house['amount'].'</p>';
                                             echo '</div>';
                                         
                                     echo '</div>';
@@ -109,7 +109,7 @@
                                                 echo '<p>Purpose</p>';
                                             echo '</div>';
                                             echo '<div class="input-group col-md-6">';
-                                                echo '<p>Rent</p>';
+                                                echo '<p>'.$house['type'].'</p>';
                                             echo '</div>';
                                         
                                     echo '</div>';
@@ -121,7 +121,7 @@
                                                 echo '<p>Bedroom(s)</p>';
                                             echo '</div>';
                                             echo '<div class="input-group col-md-6">';
-                                                echo '<p>2</p>';
+                                                echo '<p>'.$house['bedroom'].'</p>';
                                             echo '</div>';
                                         
                                     echo '</div>';
@@ -131,7 +131,7 @@
                                                 echo '<p>Location</p>';
                                             echo '</div>';
                                             echo '<div class="input-group col-md-6">';
-                                                echo '<p>Ka-22/2/A,Kalachandpur</p>';
+                                                echo '<p>'.$house['address'].'</p>';
                                             echo '</div>';
                                         
                                     echo '</div>';
@@ -143,7 +143,7 @@
                                                 echo '<p>Bath(s)</p>';
                                             echo '</div>';
                                             echo '<div class="input-group col-md-6">';
-                                                echo '<p>2</p>';
+                                                echo '<p>'.$house['bathroom'].'</p>';
                                             echo '</div>';
                                         
                                     echo '</div>';
@@ -153,7 +153,7 @@
                                                 echo '<p>Area</p>';
                                             echo '</div>';
                                             echo '<div class="input-group col-md-6">';
-                                                echo '<p>Baridhara</p>';
+                                                echo '<p>'.$house['area'].'</p>';
                                             echo '</div>';
                                         
                                     echo '</div>';
@@ -162,9 +162,7 @@
                         echo '</div>';
                         echo '<div class="description mt-5">';
                             echo '<h4>Description</h4>';
-                            echo '<p id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum consequatur perspiciatis minus unde? Consequatur a, 
-                                labore perspiciatis totam dignissimos, laudantium repellendus suscipit voluptatum accusamus ad asperiores consequuntur aspernatur, 
-                                ipsam nisi.</p>';
+                            echo '<p id="description">'.$house['description'].'</p>';
                         echo '</div>';
                         echo '<div class="similar-houses">';
                             

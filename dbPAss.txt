@@ -1,0 +1,3 @@
+db-name: basaKhuji
+db_user: chiran97
+db_pass: AdELvf-amIakw$Y6

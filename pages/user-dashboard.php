@@ -14,7 +14,7 @@
     <title>User Dashboard</title>
 </head>
 
-<body onload="callMethodOnLoad()">
+<body onload="callMethodOnLoad()" id="user-dashboard-body">
     <section class="header">
         <div class="head-contents">
             <div class="row">
@@ -30,9 +30,9 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ml-auto" id="user-navbar">
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-md btn-default-outline" href="pages/login.php"
+                                    <button class="nav-link btn btn-md btn-default-outline" onclick="logout()"
                                         style="color: rgba(0,0,0,0.7) !important">Sign-Out
-                                        <span><i class="fa fa-sign-in" aria-hidden="true"></i></span></a>
+                                        <span><i class="fa fa-sign-in" aria-hidden="true"></i></span></button>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link btn btn-md btn-default-outline" href="pages/register.php"

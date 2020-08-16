@@ -9,9 +9,9 @@
     $amount = $_POST['amount'];
     $description = $_POST['description'];
     $status = "Available";
-
-    $query = "INSERT INTO house(address,area,amount,bedroom,bathroom,type,description,status) 
-    VALUES ('$address','$area','$amount','$bed','$bath','$type','$description','$status')";
+    $userId = $_POST['userId'];
+    $query = "INSERT INTO house(address,area,amount,bedroom,bathroom,type,description,status,userId) 
+    VALUES ('$address','$area','$amount','$bed','$bath','$type','$description','$status','$userId')";
     if($house->addHouse($query)){
         echo true;
     }else{

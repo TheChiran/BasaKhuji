@@ -1,7 +1,6 @@
 <?php
     include_once("house.class.php");
     $houseObj = new House();
-
     $query = "SELECT id,area FROM house LIMIT 10";
     if($result = $houseObj->getHouse($query)){
         if(empty($result)){

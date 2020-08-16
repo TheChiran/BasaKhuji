@@ -70,6 +70,7 @@ function startFunctionOnPageLoad() {
     addFooter();
     checkAccess();
     getHouseList();
+    unsetSearchedData();
     //console.log(checkAccess());
 }
 
@@ -222,8 +223,14 @@ function search() {
                 room: roomNumber
             },
             success: function(response){
-                changeResponseData(response);
-                resetSearchFields();
+                if(response == false){
+                    resetSearchFields();
+                    setResponseAsNoData();
+                }else{
+                    changeResponseData(response);
+                    resetSearchFields();
+                    setSearchedData(response);
+                }
             }
          });
     }
@@ -234,6 +241,17 @@ function search() {
     // console.log(getHomeArea());
 
 }
+//to set response data as no result
+function setResponseAsNoData(){
+    var response = '';
+    response+='<div class="col-md-5 card home-section mt-5">';
+    response+='<div class="card-body">';
+    response+='<button class="btn btn-sm btn-outline-success" onclick="getHouseList()">Back</button>';
+    response+='<h2>Sorry! There is no data!';
+    response+='</div>';
+    response+='</div>';
+    changeResponseData(response);
+}
 //to change values on search and on click
 function changeResponseData(data){
     $('#house_list').html(data);
@@ -242,16 +260,34 @@ function changeResponseData(data){
 function addFooter(){
     // $('#footer').load('../../pages/footer.php');
 }
+//to refresh page
+function refreshPage(){
+    localStorage.removeItem('searchData');
+    getHouseList();
+}
 //to get all house list
 function getHouseList(){
-    $.ajax({
-        url: 'pages/house/get-all-house-info.function.php',
-        type: 'get',
-        success: function(response){
-            // console.log(response);
-            changeResponseData(response);
-        }
-    })
+    // $.ajax({
+    //     url: 'pages/house/get-all-house-info.function.php',
+    //     type: 'get',
+    //     success: function(response){
+    //         // console.log(response);
+    //         changeResponseData(response);
+    //     }
+    // })
+    if(localStorage.getItem('searchData') == undefined){
+        $.ajax({
+            url: 'pages/house/get-all-house-info.function.php',
+            type: 'get',
+            success: function(response){
+                // console.log(response);
+                changeResponseData(response);
+            }
+        })
+    }else{
+        changeResponseData(localStorage.getItem('searchData'));
+    }
+    
 }
 //to get single house list
 function getSingleHouse(id){
@@ -266,4 +302,12 @@ function getSingleHouse(id){
             changeResponseData(response);
         }
     })
+}
+//to set search data into localstorage
+function setSearchedData(data){
+    localStorage.setItem('searchData',data);
+}
+//to set search data to empty
+function unsetSearchedData(){
+    localStorage.removeItem('searchData');
 }

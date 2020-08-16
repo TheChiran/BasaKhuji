@@ -68,4 +68,25 @@ body{
 .card-icon{
     font-size: 35px;
 }
+#restart-icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+#restart-icon i{
+    position: absolute;
+    color: rgba(255,255,255,0.5);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: 0.5s;
+}
+#restart-icon:hover i{
+    color: aliceblue;
+}
 

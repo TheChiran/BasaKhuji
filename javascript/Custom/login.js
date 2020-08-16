@@ -36,17 +36,35 @@ function login(){
                 password: getUserPassword()
             },
             success: function(response){
-                if(response != false){
-                    validationSuccess();
-                    resetForm();
-                    setAccess(response);
-                    setTimeout(function(){
-                        window.location.href = "../index.php";
-                    },2000);
-                }
-                else{
+                if(response == false){
                     loginFailed();
+                }else{
+                    response = JSON.parse(response);
+                    if(response.id && response.access_token){
+                        localStorage.setItem('userID',response.id);
+                        setAccess(response.access_token);
+                        validationSuccess();
+                        resetForm();
+                        setAccess(response);
+                        setTimeout(function(){
+                            window.location.href = "../index.php";
+                        },2000);
+                    }else{
+                        loginFailed();
+                    }
                 }
+                
+                // if(response != false){
+                //     validationSuccess();
+                //     resetForm();
+                //     setAccess(response);
+                //     setTimeout(function(){
+                //         window.location.href = "../index.php";
+                //     },2000);
+                // }
+                // else{
+                //     loginFailed();
+                // }
                 
             },
             error: function(error){
