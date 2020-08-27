@@ -193,7 +193,7 @@ function resetSearchFields(){
 //if all fields are empty then error message will show
 
 function isSearchFieldEmpty() {
-    if (getHouseType() ===undefined && getHomeArea() == undefined && getRoomNumber() == undefined &
+    if (getHouseType() == undefined && getHomeArea() == undefined && getRoomNumber() == undefined &
         getMinimumAmount() == undefined && getMaximumAmount() == undefined) {
         return true;
     } else {
